@@ -15,7 +15,8 @@ test.describe('Login Tests', () => {
   });
 
   test('Customer should be able to login', async () => {
-    await loginPage.loginAsCustomer();
-    await expect(loginPage.page).toHaveURL(/.*customer/);
+    //TODO: FInish this test
+    await loginPage.loginAsCustomer("Harry Potter");
+    await expect(loginPage.page).toHaveURL(/.*account/);
   });
 });
