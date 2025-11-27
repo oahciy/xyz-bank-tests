@@ -1,4 +1,3 @@
-// pages/CustomersPage.ts
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CustomersPage {
@@ -26,5 +25,10 @@ export class CustomersPage {
     await this.searchCustomer(firstName);
     
     await expect(this.tableRows.first()).toContainText(firstName);
+  }
+  
+  async verifySpecificAccount(firstName: string, accountNumber: string) {
+      await this.searchCustomer(firstName);
+      await expect(this.tableRows.first()).toContainText(accountNumber);
   }
 }
