@@ -21,6 +21,10 @@ export class CustomersPage {
     await this.searchInput.fill(name);
   }
 
+  async clearSearch() {
+    await this.searchInput.clear();
+  }
+
   async verifyCustomerExists(firstName: string) {
     await this.searchCustomer(firstName);
     
@@ -28,7 +32,30 @@ export class CustomersPage {
   }
   
   async verifySpecificAccount(firstName: string, accountNumber: string) {
-      await this.searchCustomer(firstName);
-      await expect(this.tableRows.first()).toContainText(accountNumber);
+    await this.searchCustomer(firstName);
+    await expect(this.tableRows.first()).toContainText(accountNumber);
+  }
+
+  async deleteCustomer(firstName: string): Promise<boolean> {
+    await this.searchCustomer(firstName);
+    
+    const rowCount = await this.tableRows.count();
+    if (rowCount === 0) {
+      return false;
+    }
+
+    const deleteBtn = this.tableRows.first().getByRole('button', { name: 'Delete' });
+    if (await deleteBtn.isVisible()) {
+      await deleteBtn.click();
+      return true;
+    }
+    return false;
+  }
+
+  async deleteCustomers(firstNames: string[]): Promise<void> {
+    for (const firstName of firstNames) {
+      await this.deleteCustomer(firstName);
+      await this.clearSearch();
+    }
   }
 }
