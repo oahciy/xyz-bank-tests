@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:jira1": "npx playwright test tests/jira1-add-customer.spec.ts",
+    "test:jira2": "npx playwright test tests/jira2-open-account.spec.ts",
+    "test:jira3": "npx playwright test tests/jira3-deposit.spec.ts",
+    "test:visual": "npx playwright test tests/visual-regression.spec.ts",
+    "test:functional": "npx playwright test --grep-invert 'Visual'",
+    "test:update-snapshots": "npx playwright test tests/visual-regression.spec.ts --update-snapshots",
+    "report": "npx playwright show-report"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oahciy/xyz-bank-tests.git"

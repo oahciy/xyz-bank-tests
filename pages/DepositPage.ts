@@ -14,8 +14,7 @@ export class DepositPage {
     this.amountInput = page.getByPlaceholder('amount');
     this.submitBtn = page.locator('form button[type="submit"]');
     this.messageSpan = page.locator('.error');
-    // the second <strong> element shows the balance
-    this.balanceLabel = page.locator('strong').nth(1);
+    this.balanceLabel = page.locator('div.center strong').nth(1);
   }
 
   async navigateTo() {

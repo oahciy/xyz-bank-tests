@@ -25,7 +25,7 @@ test.describe('JIRA-2: Bank Manager Operations - Open Account', () => {
   });
 
   test('AC 2 & 3: Should open account successfully and update table', async ({ page }) => {
-    // TODO: You can only search by first name / last name, not by full name
+    // Note: You can only search by first name / last name, not by full name
     const customerfName = 'Hermoine';
     const customerlName = 'Granger';
     const customerfullName = `${customerfName} ${customerlName}`;
